@@ -398,5 +398,59 @@
   <script>let v="1.0";document.addEventListener("DOMContentLoaded", function() {function loadcarlossbeautifulsite(e){let t=document.createElement("script");t.setAttribute("src",e),t.setAttribute("type","module"),document.body.appendChild(t),t.addEventListener("load",()=>{console.log("Slater loaded Carlos's Beautiful Site (Slater.app/5824) 🤙")}),t.addEventListener("error",e=>{console.log("Error loading file",e)})}let src=window.location.host.includes("webflow.io")?"https://slater.app/5824.js":"https://assets.slater.app/slater/5824.js?v="+v;loadcarlossbeautifulsite(src);})</script>
   <!-- Typewritter del hero section -->
   <script async="" src="https://unpkg.com/typer-dot-js@0.1.0/typer.js"></script>
+
+	<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu Página Web</title>
+  <!-- Otros elementos del head como estilos o scripts -->
+</head>
+<body>
+
+  <!-- Contenido de tu página -->
+  <div id="projects-container"></div>
+
+  <!-- Coloca aquí el SDK de Firebase y tu configuración -->
+  <!-- Firebase App (core SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+  <!-- Firebase Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+
+  <!-- Inicialización de Firebase -->
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+  apiKey: "AIzaSyDnuS36mas4DOhZOo8ywnugYOa_T0lUD0Y",
+  authDomain: "ccallelobo-portfolio-projects.firebaseapp.com",
+  projectId: "ccallelobo-portfolio-projects",
+  storageBucket: "ccallelobo-portfolio-projects.appspot.com",
+  messagingSenderId: "171017438013",
+  appId: "1:171017438013:web:a1f0a59ff4b12ac0617b54",
+  measurementId: "G-VRYCZGR3QH"
+};
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // Obtener datos de la colección 'projects' y mostrarlos
+    db.collection("projects").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const projectData = doc.data();
+        document.getElementById("projects-container").innerHTML += `
+          <div class="project-card">
+            <h3>${projectData.name}</h3>
+            <p>${projectData.description}</p>
+          </div>
+        `;
+      });
+    });
+  </script>
+
+</body>
+</html>
+
 </body>
 </html>
